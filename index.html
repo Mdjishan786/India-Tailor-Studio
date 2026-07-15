@@ -1,0 +1,3349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indian Tailor – Custom Stitching & Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================================
+                   GLOBAL RESET & VARIABLES (Light & Dark)
+                   ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme (default) */
+            --primary: #7a1a2a;
+            --primary-dark: #5a1220;
+            --primary-light: #a83242;
+            --gold: #c9a84b;
+            --gold-light: #e8d5a3;
+            --gold-dark: #b8922f;
+            --cream: #fbf3e8;
+            --cream-dark: #f0e6d8;
+            --white: #ffffff;
+            --light-bg: #f8f4ef;
+            --text: #2d2a2a;
+            --text-light: #5a4e4e;
+            --text-muted: #8a7a7a;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.18);
+            --border: #e6ddd5;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --admin-sidebar-width: 280px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --bg-body: var(--cream);
+            --bg-card: var(--white);
+            --bg-header: var(--primary);
+            --bg-footer: var(--primary-dark);
+            --text-color: var(--text);
+            --text-secondary: var(--text-light);
+            --border-color: var(--border);
+            --shadow-color: var(--shadow);
+            --input-bg: var(--cream);
+            --admin-bg: #f4f0ec;
+            --admin-sidebar-bg: #1a2433;
+            --admin-sidebar-text: #e8e8f0;
+            --panel-bg: var(--white);
+            --table-header-bg: #f8f6f3;
+            --table-hover: #faf8f6;
+            --modal-bg: var(--white);
+            --toast-bg: #1a2433;
+            --toggle-bg: var(--primary);
+            --toggle-text: var(--white);
+            --scroll-track: #f0ece8;
+            --scroll-thumb: var(--gold);
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary: #b84a5a;
+            --primary-dark: #8a2a3a;
+            --primary-light: #d06a7a;
+            --gold: #e8c96a;
+            --gold-light: #f0dd9a;
+            --gold-dark: #d4b04a;
+            --cream: #1a1a1e;
+            --cream-dark: #121216;
+            --white: #24242a;
+            --light-bg: #1e1e24;
+            --text: #e8e4e0;
+            --text-light: #b0aaa4;
+            --text-muted: #8a8480;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.6);
+            --border: #3a3430;
+            --bg-body: #1a1a1e;
+            --bg-card: #24242a;
+            --bg-header: #121216;
+            --bg-footer: #0e0e12;
+            --text-color: #e8e4e0;
+            --text-secondary: #b0aaa4;
+            --border-color: #3a3430;
+            --shadow-color: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --input-bg: #2a2a30;
+            --admin-bg: #1a1a1e;
+            --admin-sidebar-bg: #0e0e12;
+            --admin-sidebar-text: #d0ccc8;
+            --panel-bg: #24242a;
+            --table-header-bg: #2a2a30;
+            --table-hover: #2e2e34;
+            --modal-bg: #24242a;
+            --toast-bg: #2a2a30;
+            --toggle-bg: #b84a5a;
+            --toggle-text: #fff;
+            --scroll-track: #2a2a30;
+            --scroll-thumb: var(--gold);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-body);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .svg-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--scroll-track);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--scroll-thumb);
+            border-radius: 10px;
+        }
+
+        /* ============================================================
+                   LOADING SCREEN
+                   ============================================================ */
+        #loadingScreen {
+            position: fixed;
+            inset: 0;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #loadingScreen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loader-ring {
+            width: 64px;
+            height: 64px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .loading-text {
+            color: var(--gold);
+            margin-top: 24px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .loading-logo {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .loading-logo span {
+            color: var(--gold);
+        }
+
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-family: var(--font-sans);
+            line-height: 1.4;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn .svg-icon {
+            font-size: 1.1em;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(122, 26, 42, 0.3);
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--primary);
+        }
+        .btn-gold:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 168, 75, 0.4);
+        }
+        .btn-success {
+            background: #1e7e34;
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #16662a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 126, 52, 0.35);
+        }
+        .btn-danger {
+            background: #c0392b;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #a93226;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.35);
+        }
+        .btn-warning {
+            background: #d98a2a;
+            color: #fff;
+        }
+        .btn-warning:hover {
+            background: #b06e1e;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(122, 26, 42, 0.05);
+        }
+        .btn-sm {
+            padding: 4px 14px;
+            font-size: 0.75rem;
+            border-radius: 30px;
+        }
+        .btn-lg {
+            padding: 14px 40px;
+            font-size: 1.05rem;
+        }
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============================================================
+                   PUBLIC HEADER
+                   ============================================================ */
+        .public-header {
+            background: var(--bg-header);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: background var(--transition);
+        }
+        .public-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 72px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .public-header .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .public-header .logo span {
+            color: var(--white);
+        }
+        .public-header .logo .svg-icon {
+            font-size: 1.6rem;
+            color: var(--gold);
+        }
+        .public-header .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .public-header .nav-links a {
+            font-weight: 500;
+            font-size: 0.82rem;
+            padding: 6px 14px;
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.3px;
+        }
+        .public-header .nav-links a:hover,
+        .public-header .nav-links a.active {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .public-header .nav-links a.active {
+            background: rgba(201, 168, 75, 0.25);
+            color: var(--gold);
+        }
+        .public-header .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .public-header .admin-trigger {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-sans);
+        }
+        .public-header .admin-trigger:hover {
+            background: var(--gold-light);
+            transform: scale(1.04);
+        }
+        /* Dark mode toggle in header */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(20deg);
+        }
+        .theme-toggle .svg-icon {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ============================================================
+                   HERO SECTION
+                   ============================================================ */
+        .hero {
+            background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background var(--transition);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(201, 168, 75, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .hero .hero-badge {
+            display: inline-block;
+            background: rgba(201, 168, 75, 0.2);
+            color: var(--gold);
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201, 168, 75, 0.15);
+        }
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero h1 span {
+            color: var(--white);
+        }
+        .hero p {
+            max-width: 620px;
+            margin: 0 auto 32px;
+            font-size: 1.15rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .hero .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(201, 168, 75, 0.3);
+        }
+        .hero .btn-hero:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 50px rgba(201, 168, 75, 0.4);
+            background: var(--gold-light);
+        }
+        .hero .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 56px;
+            flex-wrap: wrap;
+        }
+        .hero .hero-stats .stat {
+            text-align: center;
+        }
+        .hero .hero-stats .stat .num {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: var(--font-serif);
+        }
+        .hero .hero-stats .stat .label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+                   PAGE SYSTEM
+                   ============================================================ */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================
+                   PUBLIC SECTIONS (inside pages)
+                   ============================================================ */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color var(--transition), background var(--transition);
+        }
+        .section:last-of-type {
+            border-bottom: none;
+        }
+        .section-alt {
+            background: var(--bg-card);
+            transition: background var(--transition);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+            line-height: 1.2;
+            transition: color var(--transition);
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 44px;
+            font-size: 1.05rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: color var(--transition);
+        }
+        .section-title .accent-line {
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 12px auto 0;
+            border-radius: 10px;
+            transition: background var(--transition);
+        }
+        .section-title .accent-icon {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-top: 8px;
+        }
+
+        /* ============================================================
+                   SERVICES
+                   ============================================================ */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px 28px;
+            box-shadow: var(--shadow-color);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--primary));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card .icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(201, 168, 75, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 2.2rem;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .service-card:hover .icon-wrap {
+            background: rgba(201, 168, 75, 0.2);
+            transform: scale(1.05);
+        }
+        .service-card .icon-wrap .svg-icon {
+            width: 40px;
+            height: 40px;
+        }
+        .service-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+            transition: color var(--transition);
+        }
+        .service-card .category-tag {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            background: var(--bg-body);
+            padding: 2px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 6px;
+            font-weight: 500;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        /* ============================================================
+                   PRICES
+                   ============================================================ */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        .price-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            box-shadow: var(--shadow-color);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        .price-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+        .price-card .item {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+        .price-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 6px 0 8px;
+            font-family: var(--font-serif);
+            transition: color var(--transition);
+        }
+        .price-card .service-tag {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            background: var(--bg-body);
+            padding: 2px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: background var(--transition), color var(--transition);
+        }
+        .price-card .price-icon {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        /* ============================================================
+                   GALLERY
+                   ============================================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 18px;
+        }
+        .gallery-grid .gallery-item {
+            aspect-ratio: 1/1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .gallery-grid .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        .gallery-grid .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-grid .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(122, 26, 42, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+        .gallery-grid .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* ============================================================
+                   APPOINTMENT FORM
+                   ============================================================ */
+        .appointment-form {
+            max-width: 540px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px 44px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+        .appointment-form .form-group {
+            margin-bottom: 20px;
+        }
+        .appointment-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            letter-spacing: 0.3px;
+            transition: color var(--transition);
+        }
+        .appointment-form label .required {
+            color: #c0392b;
+            margin-left: 2px;
+        }
+        .appointment-form input,
+        .appointment-form select {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            outline: none;
+            background: var(--input-bg);
+            font-family: var(--font-sans);
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+        .appointment-form input:focus,
+        .appointment-form select:focus {
+            border-color: var(--gold);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(201, 168, 75, 0.15);
+        }
+        .appointment-form input::placeholder {
+            color: var(--text-muted);
+        }
+        .appointment-form .btn-gold {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border-radius: 50px;
+        }
+        #bookMessage {
+            margin-top: 18px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        #bookMessage .success {
+            color: #27ae60;
+        }
+        #bookMessage .error {
+            color: #c0392b;
+        }
+
+        /* ============================================================
+                   CONTACT
+                   ============================================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .contact-item {
+            background: var(--bg-card);
+            padding: 20px 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .contact-item:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-color);
+        }
+        .contact-item .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(201, 168, 75, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: background var(--transition), color var(--transition);
+        }
+        .contact-item .contact-icon .svg-icon {
+            font-size: 1.2rem;
+        }
+        .contact-item .contact-content {
+            flex: 1;
+        }
+        .contact-item .contact-content .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+        .contact-item .contact-content .value {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .contact-item .contact-content .value a {
+            color: var(--primary);
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+        .contact-item .contact-content .value a:hover {
+            color: var(--gold);
+        }
+
+        /* Google Maps embed */
+        .map-container {
+            margin-top: 30px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            transition: border-color var(--transition);
+            box-shadow: var(--shadow-color);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+        }
+
+        /* ============================================================
+                   ABOUT
+                   ============================================================ */
+        .about-text {
+            background: var(--bg-card);
+            padding: 36px 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: var(--shadow-color);
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+        .about-text .quote-mark {
+            font-size: 3rem;
+            color: var(--gold);
+            font-family: var(--font-serif);
+            line-height: 1;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ============================================================
+                   SOCIAL
+                   ============================================================ */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-color);
+            color: var(--primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+        .social-icons a .svg-icon {
+            font-size: 1.6rem;
+        }
+        .social-icons a:hover {
+            transform: translateY(-6px) scale(1.05);
+            color: var(--gold);
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        .footer {
+            background: var(--bg-footer);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 36px 0 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--gold);
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .footer .gold {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .footer a {
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .footer a:hover {
+            color: var(--gold-light);
+        }
+        .footer .footer-divider {
+            width: 60px;
+            height: 2px;
+            background: rgba(201, 168, 75, 0.3);
+            margin: 12px auto;
+            border-radius: 10px;
+        }
+        .footer .footer-dev {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+        .footer .footer-dev a {
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .footer .footer-dev a:hover {
+            color: var(--gold-light);
+        }
+
+        /* ============================================================
+                   BACK TO TOP BUTTON
+                   ============================================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(122, 26, 42, 0.4);
+            transition: var(--transition);
+            z-index: 1400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px) scale(1.08);
+            background: var(--primary-dark);
+            box-shadow: 0 8px 30px rgba(122, 26, 42, 0.5);
+        }
+        .back-to-top .svg-icon {
+            font-size: 1.4rem;
+        }
+
+        /* ============================================================
+                   ADMIN OVERLAY
+                   ============================================================ */
+        .admin-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+        .admin-overlay.open {
+            display: flex;
+        }
+
+        .admin-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background: var(--admin-bg);
+            color: var(--text-color);
+            overflow: hidden;
+            transition: background var(--transition);
+        }
+
+        .admin-sidebar {
+            width: var(--admin-sidebar-width);
+            background: var(--admin-sidebar-bg);
+            color: var(--admin-sidebar-text);
+            height: 100%;
+            overflow-y: auto;
+            flex-shrink: 0;
+            padding: 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            transition: background var(--transition), color var(--transition);
+        }
+        .admin-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .admin-sidebar::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+        .admin-sidebar .brand {
+            padding: 20px 24px 18px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .admin-sidebar .brand .svg-icon {
+            font-size: 1.4rem;
+        }
+        .admin-sidebar .brand span {
+            color: var(--white);
+            font-weight: 400;
+        }
+        .admin-sidebar .nav-item {
+            padding: 12px 24px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .admin-sidebar .nav-item .svg-icon {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+        .admin-sidebar .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        .admin-sidebar .nav-item.active {
+            background: rgba(201, 168, 75, 0.12);
+            border-left-color: var(--gold);
+            color: #fff;
+        }
+        .admin-sidebar .nav-item.active .svg-icon {
+            opacity: 1;
+            color: var(--gold);
+        }
+        .admin-sidebar .nav-item.logout {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .admin-sidebar .nav-item.logout:hover {
+            background: rgba(192, 57, 43, 0.2);
+            color: #ff6b6b;
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 28px 36px;
+            overflow-y: auto;
+            background: var(--admin-bg);
+            transition: background var(--transition);
+        }
+        .admin-main::-webkit-scrollbar {
+            width: 6px;
+        }
+        .admin-main::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+        .admin-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .admin-top h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            transition: color var(--transition);
+        }
+        .admin-top .close-admin-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 8px 22px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+        }
+        .admin-top .close-admin-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.03);
+        }
+
+        .admin-panel {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+        .admin-panel.active {
+            display: block;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .panel-header h3 {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .panel-header h3 .svg-icon {
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--panel-bg);
+            padding: 20px 22px;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-color);
+        }
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-serif);
+            transition: color var(--transition);
+        }
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th,
+        td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color var(--transition);
+        }
+        th {
+            background: var(--table-header-bg);
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background var(--transition), color var(--transition);
+        }
+        tr:hover td {
+            background: var(--table-hover);
+            transition: background var(--transition);
+        }
+        .actions-cell {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .badge-pending {
+            background: #f1c40f;
+            color: #222;
+        }
+        .badge-accepted {
+            background: #27ae60;
+            color: #fff;
+        }
+        .badge-declined {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .admin-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+        .admin-gallery-grid .gallery-item-admin {
+            aspect-ratio: 1/1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .admin-gallery-grid .gallery-item-admin:hover {
+            border-color: var(--gold);
+        }
+        .admin-gallery-grid .gallery-item-admin img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .admin-gallery-grid .gallery-item-admin .delete-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(192, 57, 43, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.8rem;
+            opacity: 0;
+        }
+        .admin-gallery-grid .gallery-item-admin:hover .delete-btn {
+            opacity: 1;
+        }
+        .admin-gallery-grid .gallery-item-admin .delete-btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            transition: color var(--transition);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            outline: none;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+            background: var(--input-bg);
+            color: var(--text-color);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(201, 168, 75, 0.12);
+        }
+        .form-group textarea {
+            border-radius: var(--radius);
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .form-row .form-group {
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .admin-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .admin-modal-overlay.open {
+            display: flex;
+        }
+        .admin-modal {
+            background: var(--modal-bg);
+            padding: 32px 40px;
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.35s ease;
+            transition: background var(--transition);
+        }
+        .admin-modal::-webkit-scrollbar {
+            width: 4px;
+        }
+        .admin-modal::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+        .admin-modal h2 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-family: var(--font-serif);
+            transition: color var(--transition);
+        }
+        .admin-modal .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .admin-modal .modal-actions button {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--toast-bg);
+            color: var(--text-color);
+            padding: 14px 32px;
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px);
+            border: 1px solid var(--border-color);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .toast.success {
+            border-left: 4px solid #27ae60;
+        }
+        .toast.error {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .toggle-admin-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--toggle-bg);
+            color: var(--toggle-text);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            cursor: pointer;
+            z-index: 1500;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 20px rgba(122, 26, 42, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+        }
+        .toggle-admin-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(122, 26, 42, 0.45);
+        }
+
+        /* ============================================================
+                   ANIMATIONS
+                   ============================================================ */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.4rem;
+            }
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .public-header .container {
+                min-height: 64px;
+            }
+            .public-header .logo {
+                font-size: 1.5rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .public-header .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 0 16px;
+                gap: 4px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .public-header .nav-links.open {
+                display: flex;
+            }
+            .public-header .nav-links a {
+                padding: 8px 16px;
+                border-radius: 8px;
+                font-size: 0.9rem;
+            }
+            .public-header .header-actions {
+                width: 100%;
+                justify-content: flex-end;
+                padding-top: 8px;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            .public-header .admin-trigger {
+                margin-left: 0;
+                justify-content: center;
+                padding: 8px 16px;
+                flex: 1;
+            }
+            .theme-toggle {
+                width: 34px;
+                height: 34px;
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 60px 0 50px;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero .hero-stats {
+                gap: 30px;
+                margin-top: 36px;
+            }
+            .hero .hero-stats .stat .num {
+                font-size: 1.6rem;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .section-sub {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .price-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .appointment-form {
+                padding: 28px 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-container iframe {
+                height: 250px;
+            }
+
+            .admin-container {
+                flex-direction: column;
+            }
+            .admin-sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+                overflow-y: auto;
+                flex-shrink: 0;
+            }
+            .admin-sidebar .brand {
+                padding: 14px 20px;
+                font-size: 1.2rem;
+            }
+            .admin-sidebar .nav-item {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .admin-main {
+                padding: 20px;
+            }
+            .admin-top h1 {
+                font-size: 1.3rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .admin-modal {
+                padding: 24px 20px;
+            }
+            .form-row {
+                flex-direction: column;
+            }
+            .form-row .form-group {
+                min-width: auto;
+            }
+            .admin-gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .toggle-admin-btn {
+                padding: 10px 18px;
+                font-size: 0.75rem;
+                bottom: 16px;
+                right: 16px;
+            }
+            .toast {
+                bottom: 80px;
+                right: 16px;
+                left: 16px;
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+            .back-to-top {
+                bottom: 80px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .btn-hero {
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .admin-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .admin-top .close-admin-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .panel {
+                padding: 16px;
+            }
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .panel-header .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .admin-modal .modal-actions {
+                flex-direction: column;
+            }
+            .admin-gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+            .about-text {
+                padding: 24px 18px;
+                font-size: 0.95rem;
+            }
+            .contact-item {
+                padding: 16px 18px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-item .contact-icon {
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    SVG SPRITE
+    ============================================================ -->
+    <svg style="display: none;">
+        <symbol id="icon-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
+        <symbol id="icon-unlock" viewBox="0 0 24 24"><path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></symbol>
+        <symbol id="icon-dashboard" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-7-2h2v-4h-2v4zm-4 0h2v-7H7v7zm8 0h2V9h-2v8z"/></symbol>
+        <symbol id="icon-services" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.1zM11 11.5c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1-.3.4-.8.4-1.1 0z"/></symbol>
+        <symbol id="icon-prices" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
+        <symbol id="icon-gallery" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 5H5l3.5-4.5z"/></symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+        <symbol id="icon-email" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+        <symbol id="icon-map" viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 12 12 12 12-4.48 12-12S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+        <symbol id="icon-social" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 12 12 12 12-4.48 12-12S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.66 0 3 1.34 3 3v1.78c.89.4 1.5 1.3 1.5 2.33 0 .8-.37 1.51-.9 1.98z"/></symbol>
+        <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></symbol>
+        <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+        <symbol id="icon-welcome" viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-14 0v1h2v-1a5 5 0 0 1 10 0v1z"/></symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
+        <symbol id="icon-save" viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
+        <symbol id="icon-edit" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+        <symbol id="icon-dress" viewBox="0 0 64 64"><path d="M32,4C24,4,20,12,20,16a12,12,0,0,0,2.15,6.86L16,46H48L41.85,22.86A12,12,0,0,0,44,16C44,12,40,4,32,4ZM24,16c0-3,2-10,8-10s8,7,8,10a8,8,0,0,1-16,0Zm15.2,28H24.8l4.47-16.79a10,10,0,0,0,5.46,0ZM41,40.42,35.61,20.25a10,10,0,0,0,3.31-3.66L42,29.35ZM18.66,44l4.2-15.75L25.08,16.59a10,10,0,0,0,3.31,3.66L23,40.42ZM14,48H50v4H14Zm4,8H46v4H18Z"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M9.37 5.51A7.35 7.35 0 0 0 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.014 7.014 0 0 1 12 19.77c-3.87 0-7-3.13-7-7 0-2.53 1.35-4.74 3.37-5.96zM12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 0 0 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></symbol>
+    </svg>
+
+    <!-- ============================================================
+    LOADING SCREEN
+    ============================================================ -->
+    <div id="loadingScreen">
+        <div class="loading-logo">Tailor<span>Studio</span></div>
+        <div class="loader-ring"></div>
+        <div class="loading-text">Crafting elegance...</div>
+    </div>
+
+    <!-- ============================================================
+    PUBLIC HEADER
+    ============================================================ -->
+    <header class="public-header" id="publicHeader">
+        <div class="container">
+            <div class="logo" onclick="navigateTo('home')">
+                <svg class="svg-icon"><use xlink:href="#icon-dress"></use></svg>
+                Indian<span>Tailor</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+                <svg class="svg-icon" style="font-size:1.6rem;"><use xlink:href="#icon-settings"></use></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a data-page="home" class="active">Home</a>
+                <a data-page="services">Services</a>
+                <a data-page="prices">Prices</a>
+                <a data-page="gallery">Gallery</a>
+                <a data-page="book">Book</a>
+                <a data-page="contact">Contact</a>
+                <a data-page="about">About</a>
+                <a data-page="social">Social</a>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="svg-icon"><use xlink:href="#icon-moon"></use></svg>
+                    </button>
+                    <button class="admin-trigger" id="adminTrigger">
+                        <svg class="svg-icon"><use xlink:href="#icon-lock"></use></svg>
+                        <span>Admin</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    PAGE: HOME (Hero only – no previews)
+    ============================================================ -->
+    <div class="page active" id="page-home">
+        <section class="hero" id="public-home">
+            <div class="hero-pattern"></div>
+            <div class="container">
+                <div class="hero-badge">✦ Bespoke Tailoring Since 2005</div>
+                <h1>Indian <span>Tailor</span></h1>
+                <p>Where tradition meets precision – custom stitching, bridal wear, and bespoke tailoring for every occasion.</p>
+                <a href="#" onclick="navigateTo('book'); return false;" class="btn-hero">
+                    <svg class="svg-icon"><use xlink:href="#icon-calendar"></use></svg>
+                    <span>Book a Consultation</span>
+                </a>
+                <div class="hero-stats">
+                    <div class="stat"><div class="num">17+</div><div class="label">Years Experience</div></div>
+                    <div class="stat"><div class="num">9K+</div><div class="label">Happy Clients</div></div>
+                    <div class="stat"><div class="num">100%</div><div class="label">Handcrafted</div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: SERVICES
+    ============================================================ -->
+    <div class="page" id="page-services">
+        <section class="section" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Our Services
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">Expert tailoring for every style and occasion</p>
+                <div class="service-grid" id="serviceGrid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: PRICES
+    ============================================================ -->
+    <div class="page" id="page-prices">
+        <section class="section section-alt" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Price List
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">Transparent pricing for our premium work</p>
+                <div class="price-grid" id="priceGrid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: GALLERY
+    ============================================================ -->
+    <div class="page" id="page-gallery">
+        <section class="section" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Gallery
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">Showcasing our finest creations</p>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: BOOK (Appointments)
+    ============================================================ -->
+    <div class="page" id="page-book">
+        <section class="section section-alt" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Book an Appointment
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">We'll get back to you within 24 hours</p>
+                <div class="appointment-form">
+                    <div class="form-group">
+                        <label>Your Name <span class="required">*</span></label>
+                        <input type="text" id="bookName" placeholder="Full name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" id="bookEmail" placeholder="email@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date <span class="required">*</span></label>
+                        <input type="date" id="bookDate" />
+                    </div>
+                    <div class="form-group">
+                        <label>Service Needed <span class="required">*</span></label>
+                        <select id="bookService"><option value="">Select a service</option></select>
+                    </div>
+                    <button class="btn btn-gold btn-block btn-lg" id="bookBtn">
+                        <svg class="svg-icon"><use xlink:href="#icon-calendar"></use></svg>
+                        <span>Book Now</span>
+                    </button>
+                    <div id="bookMessage"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: CONTACT
+    ============================================================ -->
+    <div class="page" id="page-contact">
+        <section class="section" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Contact Us
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">Get in touch with our team</p>
+                <div class="contact-grid" id="contactGrid"></div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120!2d85.8964287!3d25.9945129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbf38ee115545%3A0x37c216c14afdf66c!2sIndian%20Tailor!5e0!3m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Indian Tailor Location">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: ABOUT
+    ============================================================ -->
+    <div class="page" id="page-about">
+        <section class="section section-alt" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">About Us
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <div class="about-text" id="aboutText">
+                    <span class="quote-mark">❝</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    PAGE: SOCIAL
+    ============================================================ -->
+    <div class="page" id="page-social">
+        <section class="section" style="padding-top:60px;">
+            <div class="container">
+                <h2 class="section-title">Follow Us
+                    <span class="accent-line"></span>
+                    <span class="accent-icon">✦</span>
+                </h2>
+                <p class="section-sub">Stay connected on social media</p>
+                <div class="social-icons" id="publicSocialIcons"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================
+    FOOTER (consistent on all pages)
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p><span class="gold">Indian Tailor</span> – Custom Stitching &amp; Design</p>
+            <div class="footer-divider"></div>
+            <p id="footerText">© 2025 Tailor Studio. All rights reserved.</p>
+            <p class="footer-dev">Developed by <a href="#" onclick="return false;">Your Dev Team</a></p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    BACK TO TOP BUTTON
+    ============================================================ -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg class="svg-icon"><use xlink:href="#icon-arrow-up"></use></svg>
+    </button>
+
+    <!-- ============================================================
+    ADMIN OVERLAY
+    ============================================================ -->
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-container">
+            <aside class="admin-sidebar" id="adminSidebar">
+                <div class="brand">
+                    <svg class="svg-icon"><use xlink:href="#icon-settings"></use></svg>
+                    <span>Admin</span>
+                </div>
+                <div class="nav-item active" data-section="dashboard">
+                    <svg class="svg-icon"><use xlink:href="#icon-dashboard"></use></svg>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-section="services">
+                    <svg class="svg-icon"><use xlink:href="#icon-services"></use></svg>
+                    <span>Services</span>
+                </div>
+                <div class="nav-item" data-section="prices">
+                    <svg class="svg-icon"><use xlink:href="#icon-prices"></use></svg>
+                    <span>Prices</span>
+                </div>
+                <div class="nav-item" data-section="gallery">
+                    <svg class="svg-icon"><use xlink:href="#icon-gallery"></use></svg>
+                    <span>Gallery</span>
+                </div>
+                <div class="nav-item" data-section="appointments">
+                    <svg class="svg-icon"><use xlink:href="#icon-calendar"></use></svg>
+                    <span>Appointments</span>
+                </div>
+                <div class="nav-item" data-section="contact">
+                    <svg class="svg-icon"><use xlink:href="#icon-phone"></use></svg>
+                    <span>Contact</span>
+                </div>
+                <div class="nav-item" data-section="about">
+                    <svg class="svg-icon"><use xlink:href="#icon-info"></use></svg>
+                    <span>About</span>
+                </div>
+                <div class="nav-item" data-section="social">
+                    <svg class="svg-icon"><use xlink:href="#icon-social"></use></svg>
+                    <span>Social</span>
+                </div>
+                <div class="nav-item" data-section="settings">
+                    <svg class="svg-icon"><use xlink:href="#icon-settings"></use></svg>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item logout" id="adminLogoutBtn">
+                    <svg class="svg-icon"><use xlink:href="#icon-logout"></use></svg>
+                    <span>Logout</span>
+                </div>
+            </aside>
+
+            <main class="admin-main" id="adminMain">
+                <div class="admin-top">
+                    <h1 id="adminPageTitle">Dashboard</h1>
+                    <button class="close-admin-btn" id="closeAdminBtn">
+                        <svg class="svg-icon"><use xlink:href="#icon-close"></use></svg>
+                        <span>Close Admin</span>
+                    </button>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="admin-panel active" data-section="dashboard">
+                    <div class="stats-grid" id="adminStats">
+                        <div class="stat-card"><div class="number" id="statServices">0</div><div class="label">Services</div></div>
+                        <div class="stat-card"><div class="number" id="statPrices">0</div><div class="label">Prices</div></div>
+                        <div class="stat-card"><div class="number" id="statGallery">0</div><div class="label">Gallery</div></div>
+                        <div class="stat-card"><div class="number" id="statAppointments">0</div><div class="label">Appointments</div></div>
+                    </div>
+                    <div class="panel">
+                        <h3><svg class="svg-icon"><use xlink:href="#icon-welcome"></use></svg> Welcome, Admin</h3>
+                        <p style="margin-top:8px;color:var(--text-secondary);">Manage your tailor shop content from the sidebar. All data is stored locally in your browser.</p>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="admin-panel" data-section="services">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-services"></use></svg> Services</h3>
+                            <button class="btn btn-success" onclick="openAdminModal('service')">
+                                <svg class="svg-icon"><use xlink:href="#icon-plus"></use></svg> Add Service
+                            </button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Actions</th></tr></thead>
+                                <tbody id="adminServicesTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-services"></use></svg> Categories</h3>
+                            <button class="btn btn-success" onclick="openAdminModal('category')">
+                                <svg class="svg-icon"><use xlink:href="#icon-plus"></use></svg> Add Category
+                            </button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>#</th><th>Category Name</th><th>Actions</th></tr></thead>
+                                <tbody id="adminCategoriesTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prices -->
+                <div class="admin-panel" data-section="prices">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-prices"></use></svg> Prices</h3>
+                            <button class="btn btn-success" onclick="openAdminModal('price')">
+                                <svg class="svg-icon"><use xlink:href="#icon-plus"></use></svg> Add Price
+                            </button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>#</th><th>Item</th><th>Price</th><th>Service</th><th>Actions</th></tr></thead>
+                                <tbody id="adminPricesTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div class="admin-panel" data-section="gallery">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-gallery"></use></svg> Gallery</h3>
+                            <button class="btn btn-success" onclick="openAdminModal('gallery')">
+                                <svg class="svg-icon"><use xlink:href="#icon-plus"></use></svg> Upload Image
+                            </button>
+                        </div>
+                        <div id="adminGalleryGrid" class="admin-gallery-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Appointments -->
+                <div class="admin-panel" data-section="appointments">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-calendar"></use></svg> Appointments</h3>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Date</th><th>Service</th><th>Status</th><th>Actions</th></tr></thead>
+                                <tbody id="adminAppointmentsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="admin-panel" data-section="contact">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-phone"></use></svg> Contact Details</h3>
+                            <button class="btn btn-primary" onclick="openAdminModal('contact')">
+                                <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                            </button>
+                        </div>
+                        <div id="adminContactDisplay"></div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="admin-panel" data-section="about">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-info"></use></svg> About Us</h3>
+                            <button class="btn btn-primary" onclick="openAdminModal('about')">
+                                <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                            </button>
+                        </div>
+                        <div id="adminAboutDisplay"></div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="admin-panel" data-section="social">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-social"></use></svg> Social Media</h3>
+                            <button class="btn btn-primary" onclick="openAdminModal('social')">
+                                <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                            </button>
+                        </div>
+                        <div id="adminSocialDisplay"></div>
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div class="admin-panel" data-section="settings">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3><svg class="svg-icon"><use xlink:href="#icon-settings"></use></svg> Settings</h3>
+                        </div>
+                        <div class="form-group"><label>Website Name</label><input type="text" id="settingSiteName" value="Indian Tailor" /></div>
+                        <div class="form-group"><label>Logo URL</label><input type="text" id="settingLogo" placeholder="https://..." /></div>
+                        <div class="form-group"><label>Banner URL</label><input type="text" id="settingBanner" placeholder="https://..." /></div>
+                        <div class="form-group"><label>Footer Text</label><input type="text" id="settingFooter" value="© 2025 Tailor Studio. All rights reserved." /></div>
+                        <div class="form-group"><label>Developer Name</label><input type="text" id="settingDeveloper" value="Your Dev Team" /></div>
+                        <button class="btn btn-primary" onclick="saveSettings()">
+                            <svg class="svg-icon"><use xlink:href="#icon-save"></use></svg> Save Settings
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    ADMIN MODAL
+    ============================================================ -->
+    <div class="admin-modal-overlay" id="adminModalOverlay">
+        <div class="admin-modal">
+            <h2 id="adminModalTitle">Add</h2>
+            <div id="adminModalBody"></div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="adminModalSave">
+                    <svg class="svg-icon"><use xlink:href="#icon-save"></use></svg> Save
+                </button>
+                <button class="btn btn-outline" id="adminModalCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    TOAST
+    ============================================================ -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================
+    FLOATING ADMIN TOGGLE
+    ============================================================ -->
+    <button class="toggle-admin-btn" id="toggleAdminBtn">
+        <svg class="svg-icon"><use xlink:href="#icon-lock"></use></svg>
+        <span>Admin Panel</span>
+    </button>
+
+    <!-- ============================================================
+    SCRIPT
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // PAGE NAVIGATION SYSTEM
+        // ============================================================
+        let currentPage = 'home';
+
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            // Show target page
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
+
+            // Update nav links
+            document.querySelectorAll('.public-header .nav-links a[data-page]').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === page) link.classList.add('active');
+            });
+
+            currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('navLinks').classList.remove('open');
+
+            // Render content for each page
+            if (page === 'services') renderPublicServices();
+            if (page === 'prices') renderPublicPrices();
+            if (page === 'gallery') renderPublicGallery();
+            if (page === 'book') renderPublicAppointmentForm();
+            if (page === 'contact') renderPublicContact();
+            if (page === 'about') renderPublicAbout();
+            if (page === 'social') renderPublicSocial();
+        }
+
+        document.querySelectorAll('.public-header .nav-links a[data-page]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                navigateTo(this.dataset.page);
+            });
+        });
+
+        // ============================================================
+        // DARK MODE TOGGLE
+        // ============================================================
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const iconUse = themeToggle.querySelector('use');
+            const currentTheme = localStorage.getItem('tailor_theme') || 'light';
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('tailor_theme', theme);
+                if (theme === 'dark') {
+                    iconUse.setAttribute('xlink:href', '#icon-sun');
+                } else {
+                    iconUse.setAttribute('xlink:href', '#icon-moon');
+                }
+            }
+
+            setTheme(currentTheme);
+
+            themeToggle.addEventListener('click', function() {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                setTheme(next);
+                toast(next === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled', 'success');
+            });
+        })();
+
+        // ============================================================
+        // BACK TO TOP BUTTON
+        // ============================================================
+        (function() {
+            const btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 300) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        // ============================================================
+        // DATA LAYER (LocalStorage)
+        // ============================================================
+        function get(key, def) {
+            try {
+                const d = localStorage.getItem('tailor_' + key);
+                return d ? JSON.parse(d) : def;
+            } catch { return def; }
+        }
+
+        function set(key, val) {
+            localStorage.setItem('tailor_' + key, JSON.stringify(val));
+        }
+
+        const defaultServices = [
+            { id: 's1', name: 'Saree Blouse', category: "women's" },
+            { id: 's2', name: 'Custom Suit', category: 'Men' },
+            { id: 's3', name: 'School Dress', category: "Kids's" },
+            { id: 's4', name: 'Shoot Salbar', category: "women's" },
+            { id: 's5', name: 'Kurta Pajama', category: 'Men' },
+            { id: 's6', name: 'Groom Sherwani', category: 'Groom' },
+        ];
+        const defaultCategories = ["women's", 'Men', "Kids's", 'Groom', 'Bridal'];
+        const defaultPrices = [
+            { id: 'p1', item: 'Bridal Lehenga Stitching', price: '₹500', serviceId: '' },
+            { id: 'p2', item: 'Groom Sherwani', price: '₹450', serviceId: 's6' },
+            { id: 'p3', item: 'Saree Blouse (full stitched)', price: '₹700', serviceId: 's1' },
+            { id: 'p4', item: 'Two-Piece Suit', price: '₹1000', serviceId: 's2' },
+            { id: 'p5', item: 'Kurta Pajama Stitching', price: '₹500', serviceId: 's5' },
+            { id: 'p6', item: 'School Dress Stitching', price: '₹600', serviceId: 's3' },
+        ];
+        const defaultGallery = [
+            { id: 'g1', url: 'https://via.placeholder.com/400/8b1e2b/ffffff?text=Bridal+1', title: 'Bridal' },
+            { id: 'g2', url: 'https://via.placeholder.com/400/c9a84b/ffffff?text=Sherwani', title: 'Sherwani' },
+        ];
+        const defaultAppointments = [
+            { id: 'a1', name: 'Priya Sharma', email: 'priya@example.com', date: '2026-07-20', service: 'Bridal Lehenga',
+                status: 'pending' },
+            { id: 'a2', name: 'Rahul Verma', email: 'rahul@example.com', date: '2026-07-22', service: 'Custom Suit',
+                status: 'accepted' },
+        ];
+        const defaultContact = {
+            phone: '+91 9304940805',
+            email: 'mdjishancse@gmail.com',
+            address: 'HAYAGHAT RASOOLPUR, ALIGANJ, DARBHANGA, BIHAR, INDIA - 847301',
+            map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120!2d85.8964287!3d25.9945129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbf38ee115545%3A0x37c216c14afdf66c!2sIndian%20Tailor!5e0!3m2!1sen!2sin',
+            shopTiming: 'Mon–Sat 8:00 AM – 11:00 PM',
+            villageTiming: 'Sun 9:00 AM – 9:00 PM'
+        };
+        const defaultAbout = {
+            text: 'Indian Tailor is a premium bespoke tailoring house with over 20 years of experience. We specialize in bridal wear, groom wear, and custom stitching for men, women, and children. Our master craftsmen blend traditional techniques with modern designs to create outfits that make you shine.'
+        };
+        const defaultSocial = {
+            facebook: 'https://www.facebook.com/share/1EJ47qdsnN/',
+            instagram: 'https://www.instagram.com/jishan_2k_7?igsh=MW5jMzNtaXg0Z3VueQ==',
+            twitter: 'https://x.com/mdjishan8343',
+            youtube: 'https://youtube.com/@jishan_2k_7?si=hu7nqtYiEqCd4jLP'
+        };
+        const defaultSettings = {
+            siteName: 'Indian Tailor',
+            logo: '',
+            banner: '',
+            footer: '© 2025 Tailor Studio. All rights reserved.',
+            developer: 'Your Dev Team'
+        };
+
+        let services = get('services', defaultServices);
+        let categories = get('categories', defaultCategories);
+        let prices = get('prices', defaultPrices);
+        let gallery = get('gallery', defaultGallery);
+        let appointments = get('appointments', defaultAppointments);
+        let contact = get('contact', defaultContact);
+        let about = get('about', defaultAbout);
+        let social = get('social', defaultSocial);
+        let settings = get('settings', defaultSettings);
+
+        function saveAll() {
+            set('services', services);
+            set('categories', categories);
+            set('prices', prices);
+            set('gallery', gallery);
+            set('appointments', appointments);
+            set('contact', contact);
+            set('about', about);
+            set('social', social);
+            set('settings', settings);
+        }
+
+        // ============================================================
+        // HELPERS
+        // ============================================================
+        function genId() { return Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6); }
+
+        function esc(str) { if (!str) return ''; const d = document.createElement('div');
+            d.textContent = str; return d.innerHTML; }
+
+        function toast(msg, type) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast' + (type ? ' ' + type : '');
+            t.classList.add('show');
+            clearTimeout(t._time);
+            t._time = setTimeout(() => t.classList.remove('show'), 3200);
+        }
+
+        function getStatusBadge(status) {
+            if (status === 'accepted') return '<span class="badge badge-accepted">Accepted</span>';
+            if (status === 'declined') return '<span class="badge badge-declined">Declined</span>';
+            return '<span class="badge badge-pending">Pending</span>';
+        }
+
+        // ============================================================
+        // RENDER PUBLIC SECTIONS
+        // ============================================================
+        function renderPublicServices() {
+            const grid = document.getElementById('serviceGrid');
+            if (!services.length) { grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);">No services yet.</p>'; return; }
+            grid.innerHTML = services.map((s) => `
+                        <div class="service-card">
+                            <div class="icon-wrap">
+                                <svg class="svg-icon"><use xlink:href="#icon-dress"></use></svg>
+                            </div>
+                            <h3>${esc(s.name)}</h3>
+                            <span class="category-tag">${esc(s.category || 'General')}</span>
+                        </div>
+                    `).join('');
+        }
+
+        function renderPublicPrices() {
+            const grid = document.getElementById('priceGrid');
+            if (!prices.length) { grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);">No prices listed.</p>'; return; }
+            grid.innerHTML = prices.map(p => {
+                const svc = services.find(s => s.id === p.serviceId);
+                return `
+                            <div class="price-card">
+                                <span class="price-icon">✦</span>
+                                <div class="item">${esc(p.item)}</div>
+                                <div class="price">${esc(p.price)}</div>
+                                <span class="service-tag">${esc(svc ? svc.name : '—')}</span>
+                            </div>
+                        `;
+            }).join('');
+        }
+
+        function renderPublicGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (!gallery.length) { grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);">No images uploaded.</p>'; return; }
+            grid.innerHTML = gallery.map(g => `
+                        <div class="gallery-item">
+                            <img src="${esc(g.url)}" alt="${esc(g.title)}" loading="lazy" onerror="this.style.display='none'" />
+                            <div class="overlay">${esc(g.title)}</div>
+                        </div>
+                    `).join('');
+        }
+
+        function renderPublicAppointmentForm() {
+            const sel = document.getElementById('bookService');
+            sel.innerHTML = '<option value="">Select a service</option>' +
+                services.map(s => `<option value="${esc(s.name)}">${esc(s.name)}</option>`).join('');
+        }
+
+        function renderPublicSocial() {
+            const container = document.getElementById('publicSocialIcons');
+            const s = social;
+            const platforms = [
+                { id: 'icon-facebook', url: s.facebook, label: 'Facebook' },
+                { id: 'icon-instagram', url: s.instagram, label: 'Instagram' },
+                { id: 'icon-twitter', url: s.twitter, label: 'Twitter' },
+                { id: 'icon-youtube', url: s.youtube, label: 'YouTube' }
+            ];
+            let html = '';
+            platforms.forEach(p => {
+                if (p.url) {
+                    html += `
+                                <a href="${esc(p.url)}" target="_blank" aria-label="${p.label}" rel="noopener noreferrer">
+                                    <svg class="svg-icon"><use xlink:href="#${p.id}"></use></svg>
+                                </a>`;
+                }
+            });
+            container.innerHTML = html || '<p style="color:var(--text-muted);">No social links configured.</p>';
+        }
+
+        function renderPublicContact() {
+            const grid = document.getElementById('contactGrid');
+            const c = contact;
+            const items = [
+                { icon: 'icon-phone', label: 'Phone', value: c.phone },
+                { icon: 'icon-email', label: 'Email', value: `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` },
+                { icon: 'icon-map', label: 'Address', value: c.address },
+                { icon: 'icon-map', label: 'Map', value: `<a href="${esc(c.map)}" target="_blank" rel="noopener">Open Map →</a>` },
+                { icon: 'icon-clock', label: 'Shop Timing', value: c.shopTiming },
+                { icon: 'icon-clock', label: 'Village Timing', value: c.villageTiming }
+            ];
+            grid.innerHTML = items.map(item => `
+                        <div class="contact-item">
+                            <div class="contact-icon"><svg class="svg-icon"><use xlink:href="#${item.icon}"></use></svg></div>
+                            <div class="contact-content">
+                                <div class="label">${item.label}</div>
+                                <div class="value">${item.value}</div>
+                            </div>
+                        </div>
+                    `).join('');
+        }
+
+        function renderPublicAbout() {
+            document.getElementById('aboutText').innerHTML = `
+                        <span class="quote-mark">❝</span>
+                        <p>${esc(about.text)}</p>
+                    `;
+        }
+
+        function renderPublicFooter() {
+            const footerText = document.getElementById('footerText');
+            const devEl = document.querySelector('.footer-dev');
+            if (footerText) footerText.textContent = settings.footer || '© 2025 Tailor Studio. All rights reserved.';
+            if (devEl) {
+                const devName = settings.developer || 'Your Dev Team';
+                devEl.innerHTML = `Developed by <a href="#" onclick="return false;">${esc(devName)}</a>`;
+            }
+        }
+
+        function renderPublicAll() {
+            renderPublicServices();
+            renderPublicPrices();
+            renderPublicGallery();
+            renderPublicAppointmentForm();
+            renderPublicSocial();
+            renderPublicContact();
+            renderPublicAbout();
+            renderPublicFooter();
+        }
+
+        // ============================================================
+        // BOOK APPOINTMENT
+        // ============================================================
+        document.getElementById('bookBtn').addEventListener('click', function() {
+            const name = document.getElementById('bookName').value.trim();
+            const email = document.getElementById('bookEmail').value.trim();
+            const date = document.getElementById('bookDate').value;
+            const service = document.getElementById('bookService').value;
+            const msg = document.getElementById('bookMessage');
+
+            if (!name || !email || !date || !service) {
+                msg.innerHTML = '<span class="error">⚠️ Please fill all fields.</span>';
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                msg.innerHTML = '<span class="error">⚠️ Please enter a valid email.</span>';
+                return;
+            }
+
+            appointments.push({ id: genId(), name, email, date, service, status: 'pending' });
+            saveAll();
+
+            document.getElementById('bookName').value = '';
+            document.getElementById('bookEmail').value = '';
+            document.getElementById('bookDate').value = '';
+            document.getElementById('bookService').value = '';
+            msg.innerHTML = '<span class="success">✅ Appointment booked! We will confirm soon.</span>';
+            renderAdminAll();
+            toast('Appointment booked!', 'success');
+
+            const adminEmail = contact.email || 'admin@example.com';
+            const subject = encodeURIComponent('New Appointment – ' + name);
+            const body = encodeURIComponent(
+                `New appointment request:\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nService: ${service}\n\nPlease confirm.`
+            );
+            window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+        });
+
+        // ============================================================
+        // ADMIN AUTH & TOGGLE
+        // ============================================================
+        let adminLoggedIn = false;
+        const adminOverlay = document.getElementById('adminOverlay');
+        const toggleAdminBtn = document.getElementById('toggleAdminBtn');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+
+        function requireAdminAuth() {
+            if (adminLoggedIn) return true;
+            const pwd = prompt('🔐 Admin Access: Enter password:');
+            if (pwd === 'admin123') { adminLoggedIn = true; return true; }
+            if (pwd !== null) alert('Access Denied');
+            return false;
+        }
+
+        function updateToggleBtn() {
+            if (adminOverlay.classList.contains('open')) {
+                toggleAdminBtn.innerHTML = `
+                            <svg class="svg-icon"><use xlink:href="#icon-unlock"></use></svg>
+                            <span>Close Admin</span>
+                        `;
+            } else {
+                toggleAdminBtn.innerHTML = `
+                            <svg class="svg-icon"><use xlink:href="#icon-lock"></use></svg>
+                            <span>Admin Panel</span>
+                        `;
+            }
+        }
+
+        toggleAdminBtn.addEventListener('click', function() {
+            if (adminOverlay.classList.contains('open')) {
+                adminOverlay.classList.remove('open');
+                updateToggleBtn();
+            } else {
+                if (requireAdminAuth()) {
+                    adminOverlay.classList.add('open');
+                    updateToggleBtn();
+                    renderAdminAll();
+                    navigateAdmin('dashboard');
+                }
+            }
+        });
+
+        closeAdminBtn.addEventListener('click', function() {
+            adminOverlay.classList.remove('open');
+            updateToggleBtn();
+        });
+
+        adminLogoutBtn.addEventListener('click', function() {
+            adminLoggedIn = false;
+            adminOverlay.classList.remove('open');
+            updateToggleBtn();
+            toast('Logged out', 'success');
+        });
+
+        // ============================================================
+        // ADMIN NAVIGATION
+        // ============================================================
+        const adminNavItems = document.querySelectorAll('.admin-sidebar .nav-item:not(.logout)');
+        const adminPanels = document.querySelectorAll('.admin-panel');
+        const adminPageTitle = document.getElementById('adminPageTitle');
+
+        adminNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const section = this.dataset.section;
+                navigateAdmin(section);
+            });
+        });
+
+        function navigateAdmin(section) {
+            adminNavItems.forEach(n => n.classList.remove('active'));
+            const activeNav = document.querySelector(`.admin-sidebar .nav-item[data-section="${section}"]`);
+            if (activeNav) activeNav.classList.add('active');
+            adminPanels.forEach(p => p.classList.remove('active'));
+            const activePanel = document.querySelector(`.admin-panel[data-section="${section}"]`);
+            if (activePanel) activePanel.classList.add('active');
+
+            const titles = {
+                dashboard: 'Dashboard',
+                services: 'Services',
+                prices: 'Prices',
+                gallery: 'Gallery',
+                appointments: 'Appointments',
+                contact: 'Contact',
+                about: 'About',
+                social: 'Social',
+                settings: 'Settings'
+            };
+            adminPageTitle.textContent = titles[section] || section;
+
+            switch (section) {
+                case 'dashboard':
+                    updateAdminStats();
+                    break;
+                case 'services':
+                    renderAdminServices();
+                    renderAdminCategories();
+                    break;
+                case 'prices':
+                    renderAdminPrices();
+                    break;
+                case 'gallery':
+                    renderAdminGallery();
+                    break;
+                case 'appointments':
+                    renderAdminAppointments();
+                    break;
+                case 'contact':
+                    renderAdminContact();
+                    break;
+                case 'about':
+                    renderAdminAbout();
+                    break;
+                case 'social':
+                    renderAdminSocial();
+                    break;
+                case 'settings':
+                    loadSettingsUI();
+                    break;
+            }
+        }
+
+        // ============================================================
+        // ADMIN RENDER FUNCTIONS
+        // ============================================================
+        function renderAdminAll() {
+            updateAdminStats();
+            renderAdminServices();
+            renderAdminCategories();
+            renderAdminPrices();
+            renderAdminGallery();
+            renderAdminAppointments();
+            renderAdminContact();
+            renderAdminAbout();
+            renderAdminSocial();
+            loadSettingsUI();
+        }
+
+        function updateAdminStats() {
+            document.getElementById('statServices').textContent = services.length;
+            document.getElementById('statPrices').textContent = prices.length;
+            document.getElementById('statGallery').textContent = gallery.length;
+            document.getElementById('statAppointments').textContent = appointments.length;
+        }
+
+        function renderAdminServices() {
+            const tbody = document.getElementById('adminServicesTable');
+            if (!services.length) { tbody.innerHTML =
+                '<tr><td colspan="4" style="color:var(--text-muted);">No services.</td></tr>'; return; }
+            tbody.innerHTML = services.map((s, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td><strong>${esc(s.name)}</strong></td>
+                            <td>${esc(s.category || 'General')}</td>
+                            <td class="actions-cell">
+                                <button class="btn btn-warning btn-sm" onclick="openAdminModal('service','${s.id}')">
+                                    <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteService('${s.id}')">
+                                    <svg class="svg-icon"><use xlink:href="#icon-trash"></use></svg>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+        }
+
+        function renderAdminCategories() {
+            const tbody = document.getElementById('adminCategoriesTable');
+            if (!categories.length) { tbody.innerHTML =
+                '<tr><td colspan="3" style="color:var(--text-muted);">No categories.</td></tr>'; return; }
+            tbody.innerHTML = categories.map((c, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${esc(c)}</td>
+                            <td class="actions-cell">
+                                <button class="btn btn-warning btn-sm" onclick="editCategory(${i})">
+                                    <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCategory(${i})">
+                                    <svg class="svg-icon"><use xlink:href="#icon-trash"></use></svg>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+        }
+
+        function renderAdminPrices() {
+            const tbody = document.getElementById('adminPricesTable');
+            if (!prices.length) { tbody.innerHTML =
+            '<tr><td colspan="5" style="color:var(--text-muted);">No prices.</td></tr>'; return; }
+            tbody.innerHTML = prices.map((p, i) => {
+                const svc = services.find(s => s.id === p.serviceId);
+                return `
+                            <tr>
+                                <td>${i+1}</td>
+                                <td>${esc(p.item)}</td>
+                                <td><strong>${esc(p.price)}</strong></td>
+                                <td>${esc(svc ? svc.name : '—')}</td>
+                                <td class="actions-cell">
+                                    <button class="btn btn-warning btn-sm" onclick="openAdminModal('price','${p.id}')">
+                                        <svg class="svg-icon"><use xlink:href="#icon-edit"></use></svg> Edit
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" onclick="deletePrice('${p.id}')">
+                                        <svg class="svg-icon"><use xlink:href="#icon-trash"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+            }).join('');
+        }
+
+        function renderAdminGallery() {
+            const grid = document.getElementById('adminGalleryGrid');
+            if (!gallery.length) { grid.innerHTML = '<p style="color:var(--text-muted);">No images uploaded.</p>'; return; }
+            grid.innerHTML = gallery.map(g => `
+                        <div class="gallery-item-admin">
+                            <img src="${esc(g.url)}" alt="${esc(g.title)}" loading="lazy" onerror="this.style.display='none'" />
+                            <button class="delete-btn" onclick="deleteGalleryItem('${g.id}')" title="Delete">
+                                <svg class="svg-icon" style="font-size:1rem;"><use xlink:href="#icon-trash"></use></svg>
+                            </button>
+                        </div>
+                    `).join('');
+        }
+
+        function renderAdminAppointments() {
+            const tbody = document.getElementById('adminAppointmentsTable');
+            if (!appointments.length) { tbody.innerHTML =
+                '<tr><td colspan="7" style="color:var(--text-muted);">No appointments.</td></tr>'; return; }
+            tbody.innerHTML = appointments.map((a, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td><strong>${esc(a.name)}</strong></td>
+                            <td>${esc(a.email)}</td>
+                            <td>${esc(a.date)}</td>
+                            <td>${esc(a.service)}</td>
+                            <td>${getStatusBadge(a.status)}</td>
+                            <td class="actions-cell">
+                                ${a.status === 'pending' ? `
+                                    <button class="btn btn-success btn-sm" onclick="updateAppointment('${a.id}','accepted')">Accept</button>
+                                    <button class="btn btn-danger btn-sm" onclick="updateAppointment('${a.id}','declined')">Decline</button>
+                                ` : ''}
+                                <button class="btn btn-danger btn-sm" onclick="deleteAppointment('${a.id}')">
+                                    <svg class="svg-icon"><use xlink:href="#icon-trash"></use></svg>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+        }
+
+        function renderAdminContact() {
+            const c = contact;
+            document.getElementById('adminContactDisplay').innerHTML = `
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <p><strong>Phone:</strong> ${esc(c.phone)}</p>
+                            <p><strong>Email:</strong> ${esc(c.email)}</p>
+                            <p><strong>Address:</strong> ${esc(c.address)}</p>
+                            <p><strong>Map:</strong> ${esc(c.map)}</p>
+                            <p><strong>Shop Timing:</strong> ${esc(c.shopTiming)}</p>
+                            <p><strong>Village Timing:</strong> ${esc(c.villageTiming)}</p>
+                        </div>
+                    `;
+        }
+
+        function renderAdminAbout() {
+            document.getElementById('adminAboutDisplay').innerHTML = `<p style="font-size:1rem;line-height:1.7;">${esc(about.text)}</p>`;
+        }
+
+        function renderAdminSocial() {
+            const s = social;
+            document.getElementById('adminSocialDisplay').innerHTML = `
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <p><strong>Facebook:</strong> ${esc(s.facebook)}</p>
+                            <p><strong>Instagram:</strong> ${esc(s.instagram)}</p>
+                            <p><strong>Twitter:</strong> ${esc(s.twitter)}</p>
+                            <p><strong>YouTube:</strong> ${esc(s.youtube)}</p>
+                        </div>
+                    `;
+        }
+
+        function loadSettingsUI() {
+            document.getElementById('settingSiteName').value = settings.siteName || '';
+            document.getElementById('settingLogo').value = settings.logo || '';
+            document.getElementById('settingBanner').value = settings.banner || '';
+            document.getElementById('settingFooter').value = settings.footer || '';
+            document.getElementById('settingDeveloper').value = settings.developer || '';
+        }
+
+        function saveSettings() {
+            settings.siteName = document.getElementById('settingSiteName').value.trim();
+            settings.logo = document.getElementById('settingLogo').value.trim();
+            settings.banner = document.getElementById('settingBanner').value.trim();
+            settings.footer = document.getElementById('settingFooter').value.trim();
+            settings.developer = document.getElementById('settingDeveloper').value.trim();
+            saveAll();
+            renderPublicFooter();
+            toast('Settings saved!', 'success');
+        }
+
+        // ============================================================
+        // CRUD OPERATIONS
+        // ============================================================
+        function deleteService(id) {
+            if (!confirm('Delete this service?')) return;
+            services = services.filter(s => s.id !== id);
+            saveAll();
+            renderAdminAll();
+            renderPublicAll();
+            toast('Service deleted', 'success');
+        }
+
+        function deleteCategory(index) {
+            if (!confirm('Delete this category?')) return;
+            categories.splice(index, 1);
+            saveAll();
+            renderAdminAll();
+            renderPublicAll();
+            toast('Category deleted', 'success');
+        }
+
+        function editCategory(index) {
+            const newName = prompt('Edit category name:', categories[index]);
+            if (newName !== null && newName.trim()) {
+                categories[index] = newName.trim();
+                saveAll();
+                renderAdminAll();
+                renderPublicAll();
+                toast('Category updated', 'success');
+            }
+        }
+
+        function deletePrice(id) {
+            if (!confirm('Delete this price?')) return;
+            prices = prices.filter(p => p.id !== id);
+            saveAll();
+            renderAdminAll();
+            renderPublicAll();
+            toast('Price deleted', 'success');
+        }
+
+        function deleteGalleryItem(id) {
+            if (!confirm('Delete this image?')) return;
+            gallery = gallery.filter(g => g.id !== id);
+            saveAll();
+            renderAdminAll();
+            renderPublicAll();
+            toast('Image deleted', 'success');
+        }
+
+        function updateAppointment(id, status) {
+            const app = appointments.find(a => a.id === id);
+            if (app) {
+                app.status = status;
+                saveAll();
+                renderAdminAll();
+                renderPublicAll();
+                toast(`Appointment ${status}`, 'success');
+
+                const userEmail = app.email;
+                const userName = app.name;
+                const service = app.service;
+                const date = app.date;
+                const statusText = status.charAt(0).toUpperCase() + status.slice(1);
+                const subject = encodeURIComponent(`Appointment ${statusText} – Indian Tailor`);
+                const body = encodeURIComponent(
+                    `Dear ${userName},\n\n` +
+                    `Your appointment for "${service}" on ${date} has been ${statusText.toLowerCase()}.\n\n` +
+                    (status === 'accepted' ?
+                        'We look forward to serving you. Please arrive on time.' :
+                        'We regret to inform you that we cannot accommodate your request at this time. Please contact us for alternatives.') +
+                    `\n\nThank you,\nIndian Tailor Team`
+                );
+                window.location.href = `mailto:${userEmail}?subject=${subject}&body=${body}`;
+            }
+        }
+
+        function deleteAppointment(id) {
+            if (!confirm('Delete this appointment?')) return;
+            appointments = appointments.filter(a => a.id !== id);
+            saveAll();
+            renderAdminAll();
+            renderPublicAll();
+            toast('Appointment deleted', 'success');
+        }
+
+        // ============================================================
+        // ADMIN MODAL SYSTEM
+        // ============================================================
+        let modalType = '';
+        let modalId = null;
+
+        function openAdminModal(type, id) {
+            modalType = type;
+            modalId = id || null;
+            const overlay = document.getElementById('adminModalOverlay');
+            const title = document.getElementById('adminModalTitle');
+            const body = document.getElementById('adminModalBody');
+            let html = '';
+
+            switch (type) {
+                case 'service': {
+                    const isEdit = !!id;
+                    const svc = isEdit ? services.find(s => s.id === id) : null;
+                    title.textContent = isEdit ? '✎ Edit Service' : '＋ Add Service';
+                    html = `
+                                <div class="form-group"><label>Service Name</label><input type="text" id="modalSvcName" value="${esc(svc?svc.name:'')}" placeholder="e.g. Bridal Lehenga" /></div>
+                                <div class="form-group"><label>Category</label>
+                                    <select id="modalSvcCategory">
+                                        ${categories.map(c => `<option value="${esc(c)}" ${svc && svc.category===c?'selected':''}>${esc(c)}</option>`).join('')}
+                                        <option value="__new">＋ New Category</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="newCatGroup" style="display:none;"><label>New Category</label><input type="text" id="modalNewCat" placeholder="Enter new category" /></div>
+                            `;
+                    break;
+                }
+                case 'category': {
+                    title.textContent = '＋ Add Category';
+                    html = `<div class="form-group"><label>Category Name</label><input type="text" id="modalCatName" placeholder="e.g. Bridal" /></div>`;
+                    break;
+                }
+                case 'price': {
+                    const isEdit = !!id;
+                    const pr = isEdit ? prices.find(p => p.id === id) : null;
+                    title.textContent = isEdit ? '✎ Edit Price' : '＋ Add Price';
+                    html = `
+                                <div class="form-group"><label>Item Name</label><input type="text" id="modalPriceItem" value="${esc(pr?pr.item:'')}" placeholder="e.g. Bridal Lehenga Stitching" /></div>
+                                <div class="form-group"><label>Price</label><input type="text" id="modalPriceVal" value="${esc(pr?pr.price:'')}" placeholder="e.g. ₹15,000" /></div>
+                                <div class="form-group"><label>Service (optional)</label>
+                                    <select id="modalPriceService">
+                                        <option value="">None</option>
+                                        ${services.map(s => `<option value="${s.id}" ${pr && pr.serviceId===s.id?'selected':''}>${esc(s.name)}</option>`).join('')}
+                                    </select>
+                                </div>
+                            `;
+                    break;
+                }
+                case 'gallery': {
+                    title.textContent = '＋ Upload Image';
+                    html = `
+                                <div class="form-group"><label>Image URL</label><input type="text" id="modalGalUrl" placeholder="https://example.com/image.jpg" /></div>
+                                <div class="form-group"><label>Title</label><input type="text" id="modalGalTitle" placeholder="Image title" /></div>
+                            `;
+                    break;
+                }
+                case 'contact': {
+                    title.textContent = '✎ Edit Contact';
+                    const c = contact;
+                    html = `
+                                <div class="form-group"><label>Phone</label><input type="text" id="modalContactPhone" value="${esc(c.phone)}" /></div>
+                                <div class="form-group"><label>Email</label><input type="text" id="modalContactEmail" value="${esc(c.email)}" /></div>
+                                <div class="form-group"><label>Address</label><input type="text" id="modalContactAddress" value="${esc(c.address)}" /></div>
+                                <div class="form-group"><label>Map URL</label><input type="text" id="modalContactMap" value="${esc(c.map)}" /></div>
+                                <div class="form-group"><label>Shop Timing</label><input type="text" id="modalContactShop" value="${esc(c.shopTiming)}" /></div>
+                                <div class="form-group"><label>Village Timing</label><input type="text" id="modalContactVillage" value="${esc(c.villageTiming)}" /></div>
+                            `;
+                    break;
+                }
+                case 'about': {
+                    title.textContent = '✎ Edit About';
+                    html = `<div class="form-group"><label>About Text</label><textarea id="modalAboutText" rows="5">${esc(about.text)}</textarea></div>`;
+                    break;
+                }
+                case 'social': {
+                    title.textContent = '✎ Edit Social Links';
+                    const s = social;
+                    html = `
+                                <div class="form-group"><label>Facebook</label><input type="text" id="modalSocialFb" value="${esc(s.facebook)}" placeholder="https://facebook.com/..." /></div>
+                                <div class="form-group"><label>Instagram</label><input type="text" id="modalSocialIg" value="${esc(s.instagram)}" placeholder="https://instagram.com/..." /></div>
+                                <div class="form-group"><label>Twitter</label><input type="text" id="modalSocialTw" value="${esc(s.twitter)}" placeholder="https://twitter.com/..." /></div>
+                                <div class="form-group"><label>YouTube</label><input type="text" id="modalSocialYt" value="${esc(s.youtube)}" placeholder="https://youtube.com/..." /></div>
+                            `;
+                    break;
+                }
+                default:
+                    return;
+            }
+
+            body.innerHTML = html;
+            overlay.classList.add('open');
+
+            setTimeout(() => {
+                const sel = document.getElementById('modalSvcCategory');
+                if (sel) {
+                    sel.addEventListener('change', function() {
+                        const group = document.getElementById('newCatGroup');
+                        if (this.value === '__new') group.style.display = 'block';
+                        else group.style.display = 'none';
+                    });
+                    if (sel.value === '__new') {
+                        const group = document.getElementById('newCatGroup');
+                        if (group) group.style.display = 'block';
+                    }
+                }
+            }, 50);
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModalOverlay').classList.remove('open');
+            modalType = '';
+            modalId = null;
+        }
+
+        document.getElementById('adminModalCancel').addEventListener('click', closeAdminModal);
+        document.getElementById('adminModalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeAdminModal();
+        });
+
+        document.getElementById('adminModalSave').addEventListener('click', function() {
+            switch (modalType) {
+                case 'service': {
+                    const name = document.getElementById('modalSvcName').value.trim();
+                    const catSelect = document.getElementById('modalSvcCategory');
+                    let category = catSelect.value;
+                    if (category === '__new') {
+                        const newCat = document.getElementById('modalNewCat').value.trim();
+                        if (newCat) { categories.push(newCat);
+                            saveAll();
+                            category = newCat; } else { toast('Please enter a new category', 'error'); return; }
+                    }
+                    if (!name) { toast('Service name required', 'error'); return; }
+                    if (modalId) {
+                        const svc = services.find(s => s.id === modalId);
+                        if (svc) { svc.name = name;
+                            svc.category = category;
+                            saveAll(); }
+                    } else {
+                        services.push({ id: genId(), name, category });
+                        saveAll();
+                    }
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Service saved', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'category': {
+                    const name = document.getElementById('modalCatName').value.trim();
+                    if (!name) { toast('Category name required', 'error'); return; }
+                    categories.push(name);
+                    saveAll();
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Category added', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'price': {
+                    const item = document.getElementById('modalPriceItem').value.trim();
+                    const price = document.getElementById('modalPriceVal').value.trim();
+                    const serviceId = document.getElementById('modalPriceService').value;
+                    if (!item || !price) { toast('Item and price required', 'error'); return; }
+                    if (modalId) {
+                        const pr = prices.find(p => p.id === modalId);
+                        if (pr) { pr.item = item;
+                            pr.price = price;
+                            pr.serviceId = serviceId;
+                            saveAll(); }
+                    } else {
+                        prices.push({ id: genId(), item, price, serviceId });
+                        saveAll();
+                    }
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Price saved', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'gallery': {
+                    const url = document.getElementById('modalGalUrl').value.trim();
+                    const title = document.getElementById('modalGalTitle').value.trim();
+                    if (!url) { toast('Image URL required', 'error'); return; }
+                    gallery.push({ id: genId(), url, title: title || 'Image' });
+                    saveAll();
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Image uploaded', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'contact': {
+                    const updated = {
+                        phone: document.getElementById('modalContactPhone').value.trim(),
+                        email: document.getElementById('modalContactEmail').value.trim(),
+                        address: document.getElementById('modalContactAddress').value.trim(),
+                        map: document.getElementById('modalContactMap').value.trim(),
+                        shopTiming: document.getElementById('modalContactShop').value.trim(),
+                        villageTiming: document.getElementById('modalContactVillage').value.trim()
+                    };
+                    contact = updated;
+                    saveAll();
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Contact updated', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'about': {
+                    const text = document.getElementById('modalAboutText').value.trim();
+                    if (!text) { toast('About text required', 'error'); return; }
+                    about.text = text;
+                    saveAll();
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('About updated', 'success');
+                    closeAdminModal();
+                    break;
+                }
+                case 'social': {
+                    const updated = {
+                        facebook: document.getElementById('modalSocialFb').value.trim(),
+                        instagram: document.getElementById('modalSocialIg').value.trim(),
+                        twitter: document.getElementById('modalSocialTw').value.trim(),
+                        youtube: document.getElementById('modalSocialYt').value.trim()
+                    };
+                    social = updated;
+                    saveAll();
+                    renderAdminAll();
+                    renderPublicAll();
+                    toast('Social links updated', 'success');
+                    closeAdminModal();
+                    break;
+                }
+            }
+        });
+
+        // ============================================================
+        // ADMIN TRIGGER FROM HEADER
+        // ============================================================
+        document.getElementById('adminTrigger').addEventListener('click', function() {
+            if (adminOverlay.classList.contains('open')) {
+                adminOverlay.classList.remove('open');
+                updateToggleBtn();
+            } else {
+                if (requireAdminAuth()) {
+                    adminOverlay.classList.add('open');
+                    updateToggleBtn();
+                    renderAdminAll();
+                    navigateAdmin('dashboard');
+                }
+            }
+        });
+
+        // ============================================================
+        // MOBILE MENU
+        // ============================================================
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // ============================================================
+        // SET DEFAULT DATE
+        // ============================================================
+        document.getElementById('bookDate').value = new Date().toISOString().split('T')[0];
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        function init() {
+            document.getElementById('loadingScreen').classList.add('hidden');
+            renderPublicAll();
+            updateToggleBtn();
+            navigateTo('home');
+            console.log('✅ Indian Tailor ready. Admin password: admin123');
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
