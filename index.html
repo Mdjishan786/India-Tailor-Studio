@@ -333,7 +333,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            cursor: pointer;
         }
         .public-header .logo span {
             color: var(--white);
@@ -345,7 +344,7 @@
         .public-header .nav-links {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             flex-wrap: wrap;
         }
         .public-header .nav-links a {
@@ -391,6 +390,7 @@
             background: var(--gold-light);
             transform: scale(1.04);
         }
+        /* Dark mode toggle in header */
         .theme-toggle {
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -530,7 +530,7 @@
         }
 
         /* ============================================================
-                   PUBLIC SECTIONS (all visible on one page)
+                   PUBLIC SECTIONS
                    ============================================================ */
         .section {
             padding: 80px 0;
@@ -892,6 +892,7 @@
             color: var(--gold);
         }
 
+        /* Google Maps embed */
         .map-container {
             margin-top: 30px;
             border-radius: var(--radius-lg);
@@ -1770,13 +1771,6 @@
                 margin-bottom: 4px;
             }
         }
-
-        /* ============================================================
-                   SMOOTH SCROLL OFFSET (for fixed header)
-                   ============================================================ */
-        .section-anchor {
-            scroll-margin-top: 80px;
-        }
     </style>
 </head>
 <body>
@@ -1830,22 +1824,22 @@
     ============================================================ -->
     <header class="public-header" id="publicHeader">
         <div class="container">
-            <div class="logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
+            <div class="logo">
                 <svg class="svg-icon"><use xlink:href="#icon-dress"></use></svg>
-                Indian<span>Tailor</span>
+                Tailor<span>Studio</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
                 <svg class="svg-icon" style="font-size:1.6rem;"><use xlink:href="#icon-settings"></use></svg>
             </button>
             <nav class="nav-links" id="navLinks">
-                <a href="#hero" class="active" data-section="hero">Home</a>
-                <a href="#services" data-section="services">Services</a>
-                <a href="#prices" data-section="prices">Prices</a>
-                <a href="#gallery" data-section="gallery">Gallery</a>
-                <a href="#book" data-section="book">Book</a>
-                <a href="#contact" data-section="contact">Contact</a>
-                <a href="#about" data-section="about">About</a>
-                <a href="#social" data-section="social">Social</a>
+                <a data-section="home" class="active">Home</a>
+                <a data-section="services">Services</a>
+                <a data-section="prices">Prices</a>
+                <a data-section="gallery">Gallery</a>
+                <a data-section="appointments">Book</a>
+                <a data-section="contact">Contact</a>
+                <a data-section="about">About</a>
+                <a data-section="social">Social</a>
                 <div class="header-actions">
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                         <svg class="svg-icon"><use xlink:href="#icon-moon"></use></svg>
@@ -1860,30 +1854,30 @@
     </header>
 
     <!-- ============================================================
-    HERO SECTION
+    HERO
     ============================================================ -->
-    <section class="hero section-anchor" id="hero">
+    <section class="hero" id="public-home">
         <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-badge">✦ Bespoke Tailoring Since 2005</div>
-            <h1>Indian <span>Tailor</span></h1>
+            <h1>Tailor <span>Studio</span></h1>
             <p>Where tradition meets precision – custom stitching, bridal wear, and bespoke tailoring for every occasion.</p>
-            <a href="#book" class="btn-hero">
+            <a href="#public-appointments" class="btn-hero">
                 <svg class="svg-icon"><use xlink:href="#icon-calendar"></use></svg>
                 <span>Book a Consultation</span>
             </a>
             <div class="hero-stats">
-                <div class="stat"><div class="num">17+</div><div class="label">Years Experience</div></div>
-                <div class="stat"><div class="num">9K+</div><div class="label">Happy Clients</div></div>
+                <div class="stat"><div class="num">20+</div><div class="label">Years Experience</div></div>
+                <div class="stat"><div class="num">5k+</div><div class="label">Happy Clients</div></div>
                 <div class="stat"><div class="num">100%</div><div class="label">Handcrafted</div></div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-    SECTION: SERVICES
+    SERVICES
     ============================================================ -->
-    <section class="section section-anchor" id="services">
+    <section class="section" id="public-services">
         <div class="container">
             <h2 class="section-title">Our Services
                 <span class="accent-line"></span>
@@ -1895,9 +1889,9 @@
     </section>
 
     <!-- ============================================================
-    SECTION: PRICES
+    PRICES
     ============================================================ -->
-    <section class="section section-alt section-anchor" id="prices">
+    <section class="section section-alt" id="public-prices">
         <div class="container">
             <h2 class="section-title">Price List
                 <span class="accent-line"></span>
@@ -1909,9 +1903,9 @@
     </section>
 
     <!-- ============================================================
-    SECTION: GALLERY
+    GALLERY
     ============================================================ -->
-    <section class="section section-anchor" id="gallery">
+    <section class="section" id="public-gallery">
         <div class="container">
             <h2 class="section-title">Gallery
                 <span class="accent-line"></span>
@@ -1923,9 +1917,9 @@
     </section>
 
     <!-- ============================================================
-    SECTION: BOOK (Appointments)
+    APPOINTMENT
     ============================================================ -->
-    <section class="section section-alt section-anchor" id="book">
+    <section class="section section-alt" id="public-appointments">
         <div class="container">
             <h2 class="section-title">Book an Appointment
                 <span class="accent-line"></span>
@@ -1959,9 +1953,23 @@
     </section>
 
     <!-- ============================================================
-    SECTION: CONTACT
+    SOCIAL
     ============================================================ -->
-    <section class="section section-anchor" id="contact">
+    <section class="section" id="public-social">
+        <div class="container">
+            <h2 class="section-title">Follow Us
+                <span class="accent-line"></span>
+                <span class="accent-icon">✦</span>
+            </h2>
+            <p class="section-sub">Stay connected on social media</p>
+            <div class="social-icons" id="publicSocialIcons"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT (with Google Maps)
+    ============================================================ -->
+    <section class="section section-alt" id="public-contact">
         <div class="container">
             <h2 class="section-title">Contact Us
                 <span class="accent-line"></span>
@@ -1969,20 +1977,21 @@
             </h2>
             <p class="section-sub">Get in touch with our team</p>
             <div class="contact-grid" id="contactGrid"></div>
+            <!-- Google Maps Embed -->
             <div class="map-container">
                 <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120!2d85.8964287!3d25.9945129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbf38ee115545%3A0x37c216c14afdf66c!2sIndian%20Tailor!5e0!3m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0858!2d72.8299!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c5c8f8f8f8%3A0x7f7f7f7f7f7f7f7f!2sFashion%20Street%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1700000000000"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                title="Indian Tailor Location">
+                title="Tailor Studio Location">
             </iframe>
         </div>
     </div>
 </section>
 
 <!-- ============================================================
-SECTION: ABOUT
+ABOUT
 ============================================================ -->
-<section class="section section-alt section-anchor" id="about">
+<section class="section" id="public-about">
     <div class="container">
         <h2 class="section-title">About Us
             <span class="accent-line"></span>
@@ -1995,27 +2004,13 @@ SECTION: ABOUT
 </section>
 
 <!-- ============================================================
-SECTION: SOCIAL
-============================================================ -->
-<section class="section section-anchor" id="social">
-    <div class="container">
-        <h2 class="section-title">Follow Us
-            <span class="accent-line"></span>
-            <span class="accent-icon">✦</span>
-        </h2>
-        <p class="section-sub">Stay connected on social media</p>
-        <div class="social-icons" id="publicSocialIcons"></div>
-    </div>
-</section>
-
-<!-- ============================================================
 FOOTER
 ============================================================ -->
 <footer class="footer">
     <div class="container">
-        <p><span class="gold">Indian Tailor</span> – Custom Stitching &amp; Design</p>
+        <p><span class="gold">Tailor Studio</span> – Custom Stitching &amp; Design</p>
         <div class="footer-divider"></div>
-        <p id="footerText">© 2025 Indian Tailor. All rights reserved.</p>
+        <p id="footerText">© 2025 Tailor Studio. All rights reserved.</p>
     </div>
 </footer>
 
@@ -2224,11 +2219,11 @@ ADMIN OVERLAY
                     <div class="panel-header">
                         <h3><svg class="svg-icon"><use xlink:href="#icon-settings"></use></svg> Settings</h3>
                     </div>
-                    <div class="form-group"><label>Website Name</label><input type="text" id="settingSiteName" value="Indian Tailor" /></div>
+                    <div class="form-group"><label>Website Name</label><input type="text" id="settingSiteName" value="Tailor Studio" /></div>
                     <div class="form-group"><label>Logo URL</label><input type="text" id="settingLogo" placeholder="https://..." /></div>
                     <div class="form-group"><label>Banner URL</label><input type="text" id="settingBanner" placeholder="https://..." /></div>
-                    <div class="form-group"><label>Footer Text</label><input type="text" id="settingFooter" value="© 2025 Indian Tailor. All rights reserved." /></div>
-                    <div class="form-group"><label>Developer Name</label><input type="text" id="settingDeveloper" value="Jishan" /></div>
+                    <div class="form-group"><label>Footer Text</label><input type="text" id="settingFooter" value="© 2025 Tailor Studio. All rights reserved." /></div>
+                    <div class="form-group"><label>Developer Name</label><input type="text" id="settingDeveloper" value="Your Dev Team" /></div>
                     <button class="btn btn-primary" onclick="saveSettings()">
                         <svg class="svg-icon"><use xlink:href="#icon-save"></use></svg> Save Settings
                     </button>
@@ -2272,47 +2267,6 @@ SCRIPT
 ============================================================ -->
 <script>
     // ============================================================
-    // SINGLE-PAGE SCROLL NAVIGATION
-    // ============================================================
-    // Update active nav link on scroll
-    const sections = document.querySelectorAll('.section-anchor');
-    const navLinks = document.querySelectorAll('.public-header .nav-links a[data-section]');
-
-    function updateActiveNav() {
-        let current = 'hero';
-        sections.forEach(sec => {
-            const rect = sec.getBoundingClientRect();
-            if (rect.top <= 120) {
-                current = sec.id;
-            }
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.dataset.section === current) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateActiveNav);
-    window.addEventListener('load', updateActiveNav);
-
-    // Smooth scroll for nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId) {
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-            document.getElementById('navLinks').classList.remove('open');
-        });
-    });
-
-    // ============================================================
     // DARK MODE TOGGLE
     // ============================================================
     (function() {
@@ -2330,6 +2284,7 @@ SCRIPT
             }
         }
 
+        // Apply saved theme
         setTheme(currentTheme);
 
         themeToggle.addEventListener('click', function() {
@@ -2345,6 +2300,8 @@ SCRIPT
     // ============================================================
     (function() {
         const btn = document.getElementById('backToTop');
+        let lastScroll = 0;
+
         window.addEventListener('scroll', function() {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScroll > 300) {
@@ -2352,7 +2309,9 @@ SCRIPT
             } else {
                 btn.classList.remove('visible');
             }
+            lastScroll = currentScroll;
         });
+
         btn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -2380,11 +2339,10 @@ SCRIPT
     ];
     const defaultCategories = ['Bridal', 'Groom', 'Women', 'Men', 'Kids'];
     const defaultPrices = [
-        { id: 'p1', item: 'Bridal Lehenga Stitching', price: '₹1,000', serviceId: 's1' },
-        { id: 'p2', item: 'Groom Sherwani', price: '₹1,200', serviceId: 's2' },
-        { id: 'p3', item: 'Saree Blouse (full stitched)', price: '₹450', serviceId: 's3' },
-        { id: 'p4', item: 'Two-Piece Suit', price: '₹900', serviceId: 's4' },
-        { id: 'p5', item: 'Two-Piece Kurta', price: '₹1,000', serviceId: 's4' },
+        { id: 'p1', item: 'Bridal Lehenga Stitching', price: '₹15,000', serviceId: 's1' },
+        { id: 'p2', item: 'Groom Sherwani', price: '₹12,000', serviceId: 's2' },
+        { id: 'p3', item: 'Saree Blouse (full stitched)', price: '₹3,500', serviceId: 's3' },
+        { id: 'p4', item: 'Two-Piece Suit', price: '₹7,000', serviceId: 's4' },
     ];
     const defaultGallery = [
         { id: 'g1', url: 'https://via.placeholder.com/400/8b1e2b/ffffff?text=Bridal+1', title: 'Bridal' },
@@ -2397,28 +2355,28 @@ SCRIPT
             status: 'accepted' },
     ];
     const defaultContact = {
-        phone: '+91 9304940805',
-        email: 'mdjishancse@gmail.com',
-        address: 'HAYAGHAT RASOOLPUR, ALIGANJ, DARBHANGA, BIHAR, INDIA - 847301',
-        map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120!2d85.8964287!3d25.9945129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbf38ee115545%3A0x37c216c14afdf66c!2sIndian%20Tailor!5e0!3m2!1sen!2sin',
-        shopTiming: 'Mon–Sat 8:00 AM – 11:00 PM',
-        villageTiming: 'Sun 9:00 AM – 9:00 PM'
+        phone: '+91 98765 43210',
+        email: 'info@tailorstudio.com',
+        address: '123, Fashion Street, Mumbai, India',
+        map: 'https://maps.google.com/?q=Fashion+Street+Mumbai',
+        shopTiming: 'Mon–Sat 10:00 AM – 8:00 PM',
+        villageTiming: 'Sun 11:00 AM – 5:00 PM'
     };
     const defaultAbout = {
-        text: 'Indian Tailor is a premium bespoke tailoring house with over 20 years of experience. We specialize in bridal wear, groom wear, and custom stitching for men, women, and children. Our master craftsmen blend traditional techniques with modern designs to create outfits that make you shine.'
+        text: 'Tailor Studio is a premium bespoke tailoring house with over 20 years of experience. We specialize in bridal wear, groom wear, and custom stitching for men, women, and children. Our master craftsmen blend traditional techniques with modern designs to create outfits that make you shine.'
     };
     const defaultSocial = {
-        facebook: 'https://www.facebook.com/share/1EJ47qdsnN/',
-        instagram: 'https://www.instagram.com/jishan_2k_7?igsh=MW5jMzNtaXg0Z3VueQ==',
-        twitter: 'https://x.com/mdjishan8343',
-        youtube: 'https://youtube.com/@jishan_2k_7?si=hu7nqtYiEqCd4jLP'
+        facebook: 'https://facebook.com/tailorstudio',
+        instagram: 'https://instagram.com/tailorstudio',
+        twitter: 'https://twitter.com/tailorstudio',
+        youtube: 'https://youtube.com/tailorstudio'
     };
     const defaultSettings = {
-        siteName: 'Indian Tailor',
+        siteName: 'Tailor Studio',
         logo: '',
         banner: '',
-        footer: '© 2025 Indian Tailor. All rights reserved.',
-        developer: 'Jishan'
+        footer: '© 2025 Tailor Studio. All rights reserved.',
+        developer: 'Your Dev Team'
     };
 
     let services = get('services', defaultServices);
@@ -2978,22 +2936,6 @@ SCRIPT
             renderAdminAll();
             renderPublicAll();
             toast(`Appointment ${status}`, 'success');
-
-            const userEmail = app.email;
-            const userName = app.name;
-            const service = app.service;
-            const date = app.date;
-            const statusText = status.charAt(0).toUpperCase() + status.slice(1);
-            const subject = encodeURIComponent(`Appointment ${statusText} – Indian Tailor`);
-            const body = encodeURIComponent(
-                `Dear ${userName},\n\n` +
-                `Your appointment for "${service}" on ${date} has been ${statusText.toLowerCase()}.\n\n` +
-                (status === 'accepted' ?
-                    'We look forward to serving you. Please arrive on time.' :
-                    'We regret to inform you that we cannot accommodate your request at this time. Please contact us for alternatives.') +
-                `\n\nThank you,\nIndian Tailor Team`
-            );
-            window.location.href = `mailto:${userEmail}?subject=${subject}&body=${body}`;
         }
     }
 
@@ -3248,6 +3190,27 @@ SCRIPT
     });
 
     // ============================================================
+    // PUBLIC NAVIGATION
+    // ============================================================
+    const navLinks = document.querySelectorAll('.public-header .nav-links a[data-section]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.dataset.section;
+            const target = document.getElementById('public-' + section);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+    document.querySelector('.public-header .nav-links a[data-section="home"]')?.classList.add('active');
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ============================================================
     // ADMIN TRIGGER FROM HEADER
     // ============================================================
     document.getElementById('adminTrigger').addEventListener('click', function() {
@@ -3265,13 +3228,6 @@ SCRIPT
     });
 
     // ============================================================
-    // MOBILE MENU
-    // ============================================================
-    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-        document.getElementById('navLinks').classList.toggle('open');
-    });
-
-    // ============================================================
     // SET DEFAULT DATE
     // ============================================================
     document.getElementById('bookDate').value = new Date().toISOString().split('T')[0];
@@ -3283,9 +3239,7 @@ SCRIPT
         document.getElementById('loadingScreen').classList.add('hidden');
         renderPublicAll();
         updateToggleBtn();
-        // Update active nav on load
-        setTimeout(updateActiveNav, 100);
-        console.log('✅ Indian Tailor ready. Admin password: admin123');
+        console.log('✅ Tailor Studio ready. Admin password: admin123');
     }
 
     if (document.readyState === 'loading') {
