@@ -2335,10 +2335,10 @@
         ];
         const defaultCategories = ['Bridal', 'Groom', 'Women', 'Men', 'Kids'];
         const defaultPrices = [
-            { id: 'p1', item: 'Bridal Lehenga Stitching', price: '₹15,000', serviceId: 's1' },
-            { id: 'p2', item: 'Groom Sherwani', price: '₹12,000', serviceId: 's2' },
-            { id: 'p3', item: 'Saree Blouse (full stitched)', price: '₹3,500', serviceId: 's3' },
-            { id: 'p4', item: 'Two-Piece Suit', price: '₹7,000', serviceId: 's4' },
+            { id: 'p1', item: 'Bridal Lehenga Stitching', price: '₹1000', serviceId: 's1' },
+            { id: 'p2', item: 'Groom Sherwani', price: '₹1,200', serviceId: 's2' },
+            { id: 'p3', item: 'Saree Blouse (full stitched)', price: '₹500', serviceId: 's3' },
+            { id: 'p4', item: 'Two-Piece Suit', price: '₹1,200', serviceId: 's4' },
         ];
         const defaultGallery = [
             { id: 'g1', url: 'https://via.placeholder.com/400/8b1e2b/ffffff?text=Bridal+1', title: 'Bridal' },
@@ -2351,15 +2351,15 @@
                 status: 'accepted' },
         ];
         const defaultContact = {
-            phone: '+91 98765 43210',
-            email: 'info@indiantailor.com',
-            address: '123, Fashion Street, Mumbai, India',
+            phone: '+91 93049 40805',
+            email: 'mdjishancse@gmail.com',
+            address: 'HAYAGHAT RASOOLPUR, ALIGANJ, DARBHANGA, BIHAR, INDIA - 847301',
             map: 'https://maps.google.com/?q=Indian+Tailor+Mumbai',
-            shopTiming: 'Mon–Sat 10:00 AM – 8:00 PM',
-            villageTiming: 'Sun 11:00 AM – 5:00 PM'
+            shopTiming: 'Mon–Sat 8:00 AM – 11:00 PM',
+            villageTiming: 'Sun 9:00 AM – 9:00 PM'
         };
         const defaultAbout = {
-            text: 'Indian Tailor is a premium bespoke tailoring house with over 20 years of experience. We specialize in bridal wear, groom wear, and custom stitching for men, women, and children. Our master craftsmen blend traditional techniques with modern designs to create outfits that make you shine.'
+            text: 'Indian Tailor is a premium bespoke tailoring house with over 17 years of experience. We specialize in bridal wear, groom wear, and custom stitching for men, women, and children. Our master craftsmen blend traditional techniques with modern designs to create outfits that make you shine.'
         };
         const defaultSocial = {
             facebook: 'https://www.facebook.com/share/1EJ47qdsnN/',
@@ -2586,7 +2586,7 @@
         function requireAdminAuth() {
             if (adminLoggedIn) return true;
             const pwd = prompt('🔐 Admin Access: Enter password:');
-            if (pwd === 'admin123') { adminLoggedIn = true; return true; }
+            if (pwd === 'admin@123') { adminLoggedIn = true; return true; }
             if (pwd !== null) alert('Access Denied');
             return false;
         }
